@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2>Card edit</h2>
+
+<div style="width:300px">
+	<form method="post" action="/card/update" id="form-card-update">
+		<input type="hidden"  id="card_id" name="card[id]" value="{{id}}">
+		<div class="form-group">
+			<label for="number">Number</label>
+			<input type="text" class="form-control" id="card_number" name="card[number]" placeholder="Please enter Number" value="{{card.number}}">
+		</div>
+		<div class="form-group">
+			<label for="serial">Serial</label>
+			<input type="text" class="form-control" id="card_serial" name="card[serial]" placeholder="Please enter Serial" value="{{card.serial}}">
+		</div>
+		<div class="form-group">
+			<label for="serial">Amount</label>
+			<input type="text" class="form-control" id="card_amount" name="card[amount]" placeholder="Please enter Amount" value="{{card.amount}}">
+		</div>
+
+		<div class="form-group">
+			<label for="number">Date Expiration</label>
+			<div class="input-group date">
+				<input type="text" class="form-control datepicker" id="date_exp" name="card[date_exp]" placeholder="Please enter Date Expiration" value="{{card.date_exp}}">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+			</div>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" name="card[status]" id="card_status" value="1" {{card.checked}}> Active
+			</label>
+		</div>
+		<button type="button" class="btn btn-primary btn-card-update-back">Back</button>
+		<button type="button" class="btn btn-success btn-card-update-submit">Save</button>
+	</form>
+</div>
+{% endblock %}   

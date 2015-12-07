@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2>Card Generator</h2>
+<div style="width:300px">
+	<form method="post" action="/card/create" id="form-card-create">
+		<div class="form-group">
+			<label for="number">Number</label>
+			<input type="text" class="form-control" id="number" name="generator[number]" placeholder="Please enter Number">
+		</div>
+		<div class="form-group">
+			<label for="serial">Serial</label>
+			<input type="text" class="form-control" id="serial" name="generator[serial]" placeholder="Please enter Serial">
+		</div>
+		<div class="form-group">
+			<label for="number">Date Expiration</label>
+			<select class="form-control" id="date_exp" name="generator[date_exp]">
+				<option value="365">one year</option>
+				<option value="180">6 months</option>
+				<option value="30">1 month</option>
+			</select>
+		</div>
+
+		<button type="button" class="btn btn-primary btn-card-generator">Generating</button>
+		<button type="button" class="btn btn-success btn-card-generator-submit">Create</button>
+	</form>
+</div>
+{% endblock %}   

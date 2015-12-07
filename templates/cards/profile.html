@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2>Card profile</h2>
+
+
+<table class="table table-striped table-hover">
+  	<tr>
+  		<td>#</td>
+  		<td>{{card.id}}</td>
+  	</tr>
+  	<tr>
+  		<td>Number</td>
+  		<td>{{card.number}}</td>
+  	</tr>
+  	<tr>
+  		<td>Serial</td>
+  		<td>{{card.serial}}</td>
+  	</tr>
+  	<tr>
+  		<td>Amount</td>
+  		<td>{{card.amount}}</td>
+  	</tr>
+  	<tr>
+  		<td>Date issue</td>
+  		<td>{{card.date_issue}}</td>
+  	</tr>
+  	<tr>
+  		<td>Date of use</td>
+  		<td>{{card.date_use}}</td>
+  	</tr>
+  	<tr>
+  		<td>Date expiration</td>
+  		<td>{{card.date_exp}}</td>
+  	</tr>
+  	<tr>
+  		<td>Status</td>
+  		<td>{{card.status_name}}</td>
+  	</tr>
+</table>  		
+
+<h2>Card purshare history</h2>
+
+<table class="table table-striped table-hover">
+  <thead>
+  	<tr>
+  		<th>#</th>
+  		<th>Date</th>
+  		<th>Summa</th>
+  	</tr>
+  	{% for purshare in purshares %}
+  	<tr>
+  		<td>{{ purshare.id }}</td>
+  		<td>{{ purshare.create_at }}</td>
+  		<td>{{ purshare.summa }}</td>
+      <tr/>
+      {% endfor %}
+    </thead>
+  </table>
+
+{% endblock %}   

@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h2>Purshares</h2>
+<br>
+
+<form class="form-inline" action="/purshare/create" method="post" id="form-purshare-create">
+  <div class="form-group">
+    <label for="purshare_create_at">Date</label>
+    <input type="text" class="form-control datepicker" id="purshare_create_at" name="purshare[create_at]" placeholder="Please enter" style="width:110px">
+  </div>  
+
+  <div class="form-group">
+    <label for="purshare_card_id">Card</label>
+    <select class="form-control" id="purshare_card_id" name="purshare[card_id]"  style="width:140px">
+        <option value="" {% if search.status == '' %} selected="selected"{% endif %}>[Please select]</option>
+        {% for card in cards %}
+        <option value="{{card.id}}" >{{card.number}}/{{card.serial}}</option>
+        {% endfor %}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="purshare_summa">Summa</label>
+    <input type="text" class="form-control" id="purshare_summa" name="purshare[summa]" placeholder="Please enter" style="width:110px" >
+  </div>
+
+  <button type="submit" class="btn btn-success">Add</button>
+  <button type="reset" class="btn btn-warning btn-purshare-create-reset">Reset</button>
+</form>
+
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+  	<tr>
+  		<th>#</th>
+  		<th>Date</th>
+  		<th>Card</th>
+  		<th>Summa</th>
+  		<th></th>  		
+  	</tr>
+  	{% for purshare in purshares %}
+  	<tr>
+  		<td>{{ purshare.id }}</td>
+  		<td>{{ purshare.create_at }}</td>
+  		<td>{{ purshare.card }}</td>
+  		<td>{{ purshare.summa }}</td>
+  		<td>
+        <a href="/purshare/{{purshare.id}}/destroy" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+      <tr/>
+      {% endfor %}
+    </thead>
+  </table>
+  {% endblock %}
